@@ -1,0 +1,8 @@
+D:\.net projects\WebAPI\DataAccess\bin\Debug\netcoreapp3.1\DALAccess.deps.json
+D:\.net projects\WebAPI\DataAccess\bin\Debug\netcoreapp3.1\DALAccess.dll
+D:\.net projects\WebAPI\DataAccess\bin\Debug\netcoreapp3.1\DALAccess.pdb
+D:\.net projects\WebAPI\DataAccess\obj\Debug\netcoreapp3.1\DALAccess.AssemblyInfoInputs.cache
+D:\.net projects\WebAPI\DataAccess\obj\Debug\netcoreapp3.1\DALAccess.AssemblyInfo.cs
+D:\.net projects\WebAPI\DataAccess\obj\Debug\netcoreapp3.1\DALAccess.csproj.CoreCompileInputs.cache
+D:\.net projects\WebAPI\DataAccess\obj\Debug\netcoreapp3.1\DALAccess.dll
+D:\.net projects\WebAPI\DataAccess\obj\Debug\netcoreapp3.1\DALAccess.pdb
