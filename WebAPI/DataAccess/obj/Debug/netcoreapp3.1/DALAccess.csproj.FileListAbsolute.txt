@@ -6,3 +6,4 @@ D:\.net projects\WebAPI\DataAccess\obj\Debug\netcoreapp3.1\DALAccess.AssemblyInf
 D:\.net projects\WebAPI\DataAccess\obj\Debug\netcoreapp3.1\DALAccess.csproj.CoreCompileInputs.cache
 D:\.net projects\WebAPI\DataAccess\obj\Debug\netcoreapp3.1\DALAccess.dll
 D:\.net projects\WebAPI\DataAccess\obj\Debug\netcoreapp3.1\DALAccess.pdb
+D:\.net projects\WebAPI\DataAccess\obj\Debug\netcoreapp3.1\DALAccess.csprojAssemblyReference.cache

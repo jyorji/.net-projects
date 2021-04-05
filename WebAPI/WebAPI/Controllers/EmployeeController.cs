@@ -1,24 +1,19 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using DALAccess;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
-using System.Data.SqlClient;
-using System.Data;
-using WebAPI.Models;
-using DALAccess;
 
 namespace WebAPI.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
-    public class DepartmentController : ControllerBase
+    [Route("api/[controller]")]
+    public class EmployeeController : Controller
     {
         private readonly IConfiguration _configuration;
-
-        public DepartmentController(IConfiguration configuration)
+        public EmployeeController(IConfiguration configuration)
         {
             _configuration = configuration;
         }
@@ -26,16 +21,8 @@ namespace WebAPI.Controllers
         public JsonResult Get()
         {
             var result = new DAL(_configuration.GetConnectionString("EmployeeAppCon"));
-            var t = new JsonResult(result.GetDepartment());
+            var t = new JsonResult(result.GetEmployee());
             return t;
         }
-
-
-
-        /*[HttpPost]
-        public JsonResult Post(DepartmentClass dep)
-        {
-
-        }*/
     }
 }

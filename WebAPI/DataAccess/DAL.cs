@@ -12,7 +12,7 @@ namespace DALAccess
         {
             _connectionString = connectionString;
         }
-        public DataTable GetDepartment(int dId) 
+        public DataTable GetDepartment() 
         {
             string query = @"select * from dbo.Department";
             
@@ -32,6 +32,25 @@ namespace DALAccess
                 }
             }
             return table;
+        }
+        public DataTable GetEmployee()
+        {
+            string query = @"select * from dbo.Employee";
+            DataTable table = new DataTable();
+            string sqlDataSource = _connectionString;
+            SqlDataReader myReader;
+            using (SqlConnection mycon = new SqlConnection(sqlDataSource))
+            {
+                mycon.Open();
+                using (SqlCommand mycom = new SqlCommand(query,mycon))
+                {
+                    myReader = mycom.ExecuteReader();
+                    table.Load(myReader);
+                    myReader.Close();
+                    mycon.Close();
+                }
+            }
+                return table;
         }
     }
 }
