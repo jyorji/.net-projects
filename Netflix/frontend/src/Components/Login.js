@@ -3,7 +3,7 @@ import './Registration.css';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { Button, Card, CardFooter, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
 
-class Regisration extends Component {
+class Login extends Component {
     constructor() {
         super();
         this.state = {
@@ -28,30 +28,18 @@ class Regisration extends Component {
                                     <Form>
                                         <div>
                                             <div>
-                                                <h1 className='heading'>Register</h1>
+                                                <h1 className='heading'>Login</h1>
                                             </div>
                                         </div>
-                                        <InputGroup className='igroup'>
-                                            <Input className='txtbox' type="text" onChange={this.FirstName} placeholder="Enter First Name" />
-                                        </InputGroup>
-                                        <InputGroup className='igroup'>
-                                            <Input className='txtbox' type="text" onChange={this.LastName} placeholder="Enter Last Name" />
-                                        </InputGroup>
                                         <InputGroup className='igroup'>
                                             <Input className='txtbox' type="text" onChange={this.UserName} placeholder="Enter Username" />
                                         </InputGroup>
                                         <InputGroup className='igroup'>
-                                            <Input className='txtbox' type="number" onChange={this.PhoneNumber} placeholder="Enter Phone Number" />
-                                        </InputGroup>
-                                        <InputGroup className='igroup'>
                                             <Input className='txtbox' type="password" onChange={this.Password} placeholder="Enter Password" />
                                         </InputGroup>
-                                        <InputGroup className='igroup'>
-                                            <Input className='txtbox' type="password" placeholder="Re-Enter Password" />
-                                        </InputGroup>
-                                        <Button className='rbutton' onClick={this.register} color="danger" block>Create Account</Button>
+                                        <Button className='rbutton' onClick={this.register} color="danger" block>Sign In</Button>
                                         <p className='linktxt'>
-                                            Already a user?<Link to={'/Login'}> Sign in now.</Link>
+                                            New to Netflix?<Link to={'/Signup'}> Sign up now.</Link>
                                         </p>
                                     </Form>
                                 </CardBody>
@@ -64,4 +52,4 @@ class Regisration extends Component {
         );
     }
 }
-export default Regisration;
+export default Login;
