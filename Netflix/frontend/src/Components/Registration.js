@@ -12,11 +12,63 @@ class Regisration extends Component {
             UserName: '',
             PhoneNumber: '',
             Password: '',
+            ConfirmPassword: '',
         }
-        // this.UserName = this.UserName.bind(this);
-        // this.PhoneNumber = this.PhoneNumber.bind(this);
-        // this.Password = this.Password.bind(this);
+        this.FirstName = this.FirstName.bind(this);
+        this.LastName = this.LastName.bind(this);
+        this.UserName = this.UserName.bind(this);
+        this.PhoneNumber = this.PhoneNumber.bind(this);
+        this.Password = this.Password.bind(this);
+        this.ConfirmPassword = this.ConfirmPassword.bind(this);
+        this.Register = this.Register.bind(this);
+
     }
+    FirstName(event) {
+        this.setState({ FirstName: event.target.value })
+    }
+    LastName(event) {
+        this.setState({ LastName: event.target.value })
+    }
+    UserName(event) {
+        this.setState({ UserName: event.target.value })
+    }
+    PhoneNumber(event) {
+        this.setState({ PhoneNumber: event.target.value })
+    }
+    Password(event) {
+        this.setState({ Password: event.target.value })
+    }
+    ConfirmPassword(event) {
+        this.setState({ ConfirmPassword: event.target.value })
+    }
+    Register(event) {
+        console.log(process.env.APP_API + 'signup')
+        fetch(process.env.APP_API + 'signup', {
+            method: 'post',
+            headers: {
+                'Accept': '*/*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                FirstName: this.state.FirstName,
+                LastName: this.state.LastName,
+                UserName: this.state.UserName,
+                PhoneNumber: this.state.PhoneNumber,
+                Password: this.state.Password,
+                ConfirmPassword: this.state.ConfirmPassword
+            })
+        }).then((Response) => Response.json())
+            .then((Result) => {
+                if (Result)
+                    alert('Registration Done...')
+                //this.props.history.push("/Dashboard");
+                //<Link to={'/Login'}></Link>
+                else
+                    alert('Sorrrrrry !!!! Un-authenticated User !!!!!')
+            })
+
+    }
+
     render() {
         return (
             <div>
@@ -47,9 +99,9 @@ class Regisration extends Component {
                                             <Input className='txtbox' type="password" onChange={this.Password} placeholder="Enter Password" />
                                         </InputGroup>
                                         <InputGroup className='igroup'>
-                                            <Input className='txtbox' type="password" placeholder="Re-Enter Password" />
+                                            <Input className='txtbox' type="password" onChange={this.ConfirmPassword} placeholder="Re-Enter Password" />
                                         </InputGroup>
-                                        <Button className='rbutton' onClick={this.register} color="danger" block>Create Account</Button>
+                                        <Button className='rbutton' onClick={this.Register} color="danger" block>Create Account</Button>
                                         <p className='linktxt'>
                                             Already a user?<Link to={'/Login'}> Sign in now.</Link>
                                         </p>

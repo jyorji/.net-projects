@@ -13,9 +13,20 @@ class Login extends Component {
             PhoneNumber: '',
             Password: '',
         }
+        this.UserName = this.UserName.bind(this);
+        this.Password = this.Password.bind(this);
         // this.UserName = this.UserName.bind(this);
         // this.PhoneNumber = this.PhoneNumber.bind(this);
         // this.Password = this.Password.bind(this);
+    }
+    UserName(event) {
+        this.setState({ FirstName: event.target.value })
+    }
+    Password(event) {
+        this.setState({ Password: event.target.value })
+    }
+    Login(event) {
+
     }
     render() {
         return (
@@ -37,7 +48,7 @@ class Login extends Component {
                                         <InputGroup className='igroup'>
                                             <Input className='txtbox' type="password" onChange={this.Password} placeholder="Enter Password" />
                                         </InputGroup>
-                                        <Button className='rbutton' onClick={this.register} color="danger" block>Sign In</Button>
+                                        <Button className='rbutton' onClick={this.Login} color="danger" block>Sign In</Button>
                                         <p className='linktxt'>
                                             New to Netflix?<Link to={'/Signup'}> Sign up now.</Link>
                                         </p>
