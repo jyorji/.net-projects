@@ -42,31 +42,55 @@ class Regisration extends Component {
         this.setState({ ConfirmPassword: event.target.value })
     }
     Register(event) {
-        console.log(process.env.APP_API + 'signup')
-        fetch(process.env.APP_API + 'signup', {
-            method: 'post',
-            headers: {
-                'Accept': '*/*',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                FirstName: this.state.FirstName,
-                LastName: this.state.LastName,
-                UserName: this.state.UserName,
-                PhoneNumber: this.state.PhoneNumber,
-                Password: this.state.Password,
-                ConfirmPassword: this.state.ConfirmPassword
-            })
-        }).then((Response) => Response.json())
-            .then((Result) => {
-                if (Result)
-                    alert('Registration Done...')
-                //this.props.history.push("/Dashboard");
-                //<Link to={'/Login'}></Link>
-                else
-                    alert('Sorrrrrry !!!! Un-authenticated User !!!!!')
-            })
+        var FirstName, LastName, UserName, PhoneNumber, Password, ConfirmPassword;
+        FirstName = this.state.FirstName;
+        LastName = this.state.LastName;
+        UserName = this.state.UserName;
+        PhoneNumber = this.state.PhoneNumber;
+        Password = this.state.Password;
+        ConfirmPassword = this.state.ConfirmPassword;
+        if (this.Validation(FirstName, LastName, UserName, PhoneNumber, Password, ConfirmPassword)) {
+            // console.log(process.env.REACT_APP_API)
+            fetch(process.env.REACT_APP_API + 'signup', {
+                method: 'post',
+                headers: {
+                    'Accept': '*/*',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    FirstName: this.state.FirstName,
+                    LastName: this.state.LastName,
+                    UserName: this.state.UserName,
+                    PhoneNumber: this.state.PhoneNumber,
+                    Password: this.state.Password,
+                    ConfirmPassword: this.state.ConfirmPassword
+                })
+            }).then((Response) => Response.json())
+                .then((Result) => {
 
+                    if (Result.length > 0) {
+                        var alertString = ""
+                        Result.forEach(element => {
+                            alertString += element.error;
+                            alertString += "(" + element.expected + ")\n";
+                        });
+                        alert(alertString);
+                    }
+                    else if (Result.status == 200) {
+                        alert('Registration Done...')
+                    }
+
+                    //this.props.history.push("/Dashboard");
+                    //<Link to={'/Login'}></Link>
+                })
+        }
+    }
+    Validation(FirstName, LastName, UserName, PhoneNumber, Password, ConfirmPassword) {
+        if (FirstName === '' || LastName === '' || UserName === '' || PhoneNumber === '' || Password === '' || ConfirmPassword === '') {
+            alert('Form should not be empty')
+            return false
+        }
+        return true
     }
 
     render() {

@@ -7,25 +7,45 @@ class Login extends Component {
     constructor() {
         super();
         this.state = {
-            FirstName: '',
-            LastName: '',
             UserName: '',
-            PhoneNumber: '',
-            Password: '',
+            Password: ''
         }
         this.UserName = this.UserName.bind(this);
         this.Password = this.Password.bind(this);
+        this.Login = this.Login.bind(this);
         // this.UserName = this.UserName.bind(this);
         // this.PhoneNumber = this.PhoneNumber.bind(this);
         // this.Password = this.Password.bind(this);
     }
     UserName(event) {
-        this.setState({ FirstName: event.target.value })
+        this.setState({ UserName: event.target.value })
     }
     Password(event) {
         this.setState({ Password: event.target.value })
     }
     Login(event) {
+        if (this.state.UserName === '' || this.state.Password === '') {
+            alert('Username and Password should not be empty!!!')
+            return;
+        }
+        fetch(process.env.REACT_APP_API + 'login', {
+            method: 'post',
+            headers: {
+                'Accept': '*/*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                UserName: this.state.UserName,
+                Password: this.state.Password
+            })
+        }).then((Response) => Response.json())
+            .then((result) => {
+                console.log(result);
+                if (result.Status == 'Invalid')
+                    alert('Invalid User');
+                else
+                    this.props.history.push("/Dashboard");
+            })
 
     }
     render() {
