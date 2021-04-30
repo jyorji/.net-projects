@@ -1,31 +1,45 @@
 import React, { Component } from 'react';
 import './Registration.css';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import { Button, Card, CardFooter, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
+import { Button, Card, CardFooter, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row, Label, Alert } from 'reactstrap';
 
 class Login extends Component {
     constructor() {
+
         super();
         this.state = {
             UserName: '',
-            Password: ''
+            Password: '',
+            isActive: false,
+            errPassword: ''
+
         }
         this.UserName = this.UserName.bind(this);
         this.Password = this.Password.bind(this);
         this.Login = this.Login.bind(this);
+        //this.errPassword = this.errPassword.bind(this);
         // this.UserName = this.UserName.bind(this);
         // this.PhoneNumber = this.PhoneNumber.bind(this);
         // this.Password = this.Password.bind(this);
     }
     UserName(event) {
-        this.setState({ UserName: event.target.value })
+        this.setState({
+            UserName: event.target.value,
+            isActive: false
+        })
     }
     Password(event) {
-        this.setState({ Password: event.target.value })
+        this.setState({
+            Password: event.target.value,
+            isActive: false
+        })
     }
     Login(event) {
         if (this.state.UserName === '' || this.state.Password === '') {
-            alert('Username and Password should not be empty!!!')
+            this.setState({
+                isActive: true,
+                errPassword: 'Username and Password should not be empty!!!'
+            });
             return;
         }
         fetch(process.env.REACT_APP_API + 'login', {
@@ -41,10 +55,20 @@ class Login extends Component {
         }).then((Response) => Response.json())
             .then((result) => {
                 console.log(result);
-                if (result.Status == 'Invalid')
-                    alert('Invalid User');
-                else
-                    this.props.history.push("/Dashboard");
+                if (result.title == 'Unauthorized') {
+                    localStorage.setItem('isLoggedIn', false)
+                    this.setState({
+                        isActive: true,
+                        errPassword: 'Invalid Username or Password. Please try again'
+                    });
+                    // alert('Invalid Username or Password. Please try again');
+                }
+                else {
+                    localStorage.setItem('isLoggedIn', true)
+                    localStorage.setItem('userToken', JSON.stringify(result.token))
+                    localStorage.setItem('tokenExp', JSON.stringify(result.expiredTime))
+                    this.props.history.push("/Dashboard")
+                }
             })
 
     }
@@ -68,6 +92,7 @@ class Login extends Component {
                                         <InputGroup className='igroup'>
                                             <Input className='txtbox' type="password" onChange={this.Password} placeholder="Enter Password" />
                                         </InputGroup>
+                                        {this.state.isActive ? <Alert name='errPassword' color='danger'>{this.state.errPassword}</Alert> : null}
                                         <Button className='rbutton' onClick={this.Login} color="danger" block>Sign In</Button>
                                         <p className='linktxt'>
                                             New to Netflix?<Link to={'/Signup'}> Sign up now.</Link>
