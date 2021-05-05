@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Registration.css';
+import styled from 'styled-components'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { Button, Card, CardFooter, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
 
@@ -80,7 +81,7 @@ class Regisration extends Component {
                         alert('Registration Done...')
                     }
 
-                    //this.props.history.push("/Dashboard");
+                    this.props.history.push("/Dashboard");
                     //<Link to={'/Login'}></Link>
                 })
         }
@@ -95,7 +96,7 @@ class Regisration extends Component {
 
     render() {
         return (
-            <div>
+            <Main>
                 <Container>
                     <Row className='cbody'>
                         <Col md="9" lg="7" xl="5">
@@ -135,9 +136,26 @@ class Regisration extends Component {
                         </Col>
                     </Row>
                 </Container>
-            </div>
+            </Main>
 
         );
     }
 }
 export default Regisration;
+
+const Main = styled.main`
+    min-height: calc(100vh - 80px);
+    position: relative;
+
+    &:before{
+        background: url("/images/login-background1.jpg") center center / cover
+        no-repeat fixed;
+        content:"";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+    }
+`

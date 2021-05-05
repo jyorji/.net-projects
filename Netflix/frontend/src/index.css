@@ -5,10 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 100%;
-  width: 100%;
-  background-repeat: no-repeat;
-  background-image: url('./img/nx1.jpg');
+  color: white;
+  background-color: #040714;
+  
 }
 
 code {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Registration.css';
+import styled from 'styled-components'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { Button, Card, CardFooter, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row, Label, Alert } from 'reactstrap';
 
@@ -56,7 +57,6 @@ class Login extends Component {
             .then((result) => {
                 console.log(result);
                 if (result.title == 'Unauthorized') {
-                    localStorage.setItem('isLoggedIn', false)
                     this.setState({
                         isActive: true,
                         errPassword: 'Invalid Username or Password. Please try again'
@@ -64,17 +64,16 @@ class Login extends Component {
                     // alert('Invalid Username or Password. Please try again');
                 }
                 else {
-                    localStorage.setItem('isLoggedIn', true)
                     localStorage.setItem('userToken', JSON.stringify(result.token))
                     localStorage.setItem('tokenExp', JSON.stringify(result.expiredTime))
-                    this.props.history.push("/Dashboard")
+                    this.props.history.push("/Home")
                 }
             })
 
     }
     render() {
         return (
-            <div>
+            <Main>
                 <Container>
                     <Row className='cbody'>
                         <Col md="9" lg="7" xl="5">
@@ -103,9 +102,26 @@ class Login extends Component {
                         </Col>
                     </Row>
                 </Container>
-            </div>
+            </Main>
 
         );
     }
 }
 export default Login;
+
+const Main = styled.main`
+    min-height: calc(100vh - 80px);
+    position: relative;
+
+    &:before{
+        background: url("/images/login-background1.jpg") center center / cover
+        no-repeat fixed;
+        content:"";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+    }
+`

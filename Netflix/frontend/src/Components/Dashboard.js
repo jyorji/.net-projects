@@ -1,23 +1,24 @@
 import React from 'react';
-import {
-    Card, CardGroup, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button
-} from 'reactstrap';
+import './Registration.css';
+import Header from './Header';
+import Home from './Home';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Detail from './Detail';
 
 const Dashboard = (props) => {
     return (
         <div>
-            <CardGroup>
-                <Card>
-                    <CardImg top width="100%" src="../img/nx1.jpg" alt="Card image cap" />
-                    <CardBody>
-                        <CardTitle tag="h5">Card title</CardTitle>
-                        <CardSubtitle tag="h6" className="mb-2 text-muted">Card subtitle</CardSubtitle>
-                        <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText>
-                        <Button>Button</Button>
-                    </CardBody>
-                </Card>
-            </CardGroup>
+            <Router>
+                <Header />
+                <Switch>
+                    <Route exact path='/Home'>
+                        <Home />
+                    </Route>
+                    <Route path='/Detail' >
+                        <Detail />
+                    </Route>
+                </Switch>
+            </Router>
         </div>
     );
 };
