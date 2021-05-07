@@ -1,3 +1,16 @@
+
+# Technologies used
+
+#### Backend
+- .Net Core 3.1
+- Entity Framework
+- Ms SQL
+
+#### Frontend
+- ReactJS
+
+# Screenshots
+
 # Login Page
 ![alt text](https://github.com/jyorji/.net-projects/blob/master/Netflix/Website%20ss/login.PNG?raw=true "Logo Title Text 1")
 
