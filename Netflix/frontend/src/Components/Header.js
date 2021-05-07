@@ -1,46 +1,77 @@
-import { React, useEffect } from 'react'
 import styled from 'styled-components'
+import { useHistory, useLocation } from "react-router-dom"
+import React, { useState, useEffect } from 'react';
 
 function Header() {
-    const token = localStorage.getItem('userToken');
+    const [isMenuActive, setMenuActiveFlag] = useState(false);
+    const token = localStorage.getItem('userToken')
+    const history = useHistory()
+    const location = useLocation();
+    let RedirectTo = e => {
+        history.push("/Home");
+    }
+    let LogOut = e => {
+        setMenuActiveFlag(false)
+        localStorage.clear()
+        history.push('/Login')
+    }
+    let ShowMenu = e => {
+        if (isMenuActive) {
+            setMenuActiveFlag(false)
+        } else {
+            setMenuActiveFlag(true)
+        }
+    }
     useEffect(() => {
+        // Update the document title using the browser API
+        //document.title = `You clicked ${count} times`;
+        //setMenuActiveFlag(false);
     });
+
+
     return (
         <Nav>
-            <Logo src='/images/logo.svg' />
-            {token == null
-                ? console.log(token)
+            <Logo src='' />
+            {location.pathname === '/Login' || location.pathname === '/Signup'
+
+                ? null
                 :
                 <>
                     <NavMenu>
                         <a>
-                            <img src='/images/home-icon.svg' />
-                            <span>HOME</span>
+                            <img src='/images/home-icon.svg' alt='' />
+                            <span onClick={RedirectTo}>HOME</span>
                         </a>
                         <a>
-                            <img src='/images/search-icon.svg' />
+                            <img src='/images/search-icon.svg' alt='' />
                             <span>SEARCH</span>
                         </a>
                         <a>
-                            <img src='/images/watchlist-icon.svg' />
+                            <img src='/images/watchlist-icon.svg' alt='' />
                             <span>WATCHLIST</span>
                         </a>
                         <a>
-                            <img src='/images/original-icon.svg' />
+                            <img src='/images/original-icon.svg' alt='' />
                             <span>ORIGINALS</span>
                         </a>
                         <a>
-                            <img src='/images/movie-icon.svg' />
+                            <img src='/images/movie-icon.svg' alt='' />
                             <span>MOIVES</span>
                         </a>
                         <a>
-                            <img src='/images/series-icon.svg' />
+                            <img src='/images/series-icon.svg' alt='' />
                             <span>SERIES</span>
                         </a>
                     </NavMenu>
-                    <User>
-                        <UserImg src='https://yt3.ggpht.com/yti/ANoDKi54HzQXpzcGGtY2fwQzzAX_6936JAKE-SS9NU5Q=s108-c-k-c0x00ffffff-no-rj' />
-                    </User>
+
+                    <UserMenu>
+                        <UserImg src='https://yt3.ggpht.com/yti/ANoDKi54HzQXpzcGGtY2fwQzzAX_6936JAKE-SS9NU5Q=s108-c-k-c0x00ffffff-no-rj' alt='' onClick={ShowMenu} />
+                        {isMenuActive ? (
+                            <Dropdown onClick={LogOut}>Sign out</Dropdown>
+                        ) : (
+                            null
+                        )}
+                    </UserMenu>
                 </>
             }
 
@@ -51,12 +82,17 @@ function Header() {
 export default Header
 
 const Nav = styled.nav`
+    positon: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
     height: 70px;
     background: #090b13;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     padding: 0 36px;
-    overflow-x: hidden;
+    z-index: 3;
 `
 const Logo = styled.img`
     width: 80px;
@@ -106,18 +142,36 @@ const NavMenu = styled.div`
     }
 `
 const UserImg = styled.img`
+    height: 100%;
+`
+const Dropdown = styled.div`
+    position: absolute;
+    top: 48px;
+    right: 0px;
+    background: rgb(19, 19, 19);
+    border: 1px solid rgba(151, 151, 151, 0.34);
+    border-radius: 4px;
+    box-shadow: rgb(0 0 0 / 50%) 0px 0px 18px 0px;
+    padding: 10px;
+    font-size: 14px;
+    letter-spacing: 3px;
+    width: 100px;
+    z-index: 99;
+`
+
+const UserMenu = styled.div`
+    position: relative;
     width: 48px;
     height: 48px;
-    border-radius: 50%;
+    display: flex;
     cursor: pointer;
+    align-item: center;
+    justify-content: center;
+
+    ${UserImg}{
+        border-radius: 50%;
+        height: 100%;
+        width: 100%;
+    }
+}
 `
-
-const User = styled.div`
-    
-`
-
-// const UserName = styled.span`
-//     padding-right: 20px;
-//     font-size: 15px;
-
-// `

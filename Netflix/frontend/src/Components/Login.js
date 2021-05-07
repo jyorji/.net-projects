@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Registration.css';
 import styled from 'styled-components'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import { Button, Card, CardFooter, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row, Label, Alert } from 'reactstrap';
+import { Button, Card, CardBody, Col, Container, Form, Input, InputGroup, Row, Alert } from 'reactstrap';
 
 class Login extends Component {
     constructor() {
@@ -18,10 +18,6 @@ class Login extends Component {
         this.UserName = this.UserName.bind(this);
         this.Password = this.Password.bind(this);
         this.Login = this.Login.bind(this);
-        //this.errPassword = this.errPassword.bind(this);
-        // this.UserName = this.UserName.bind(this);
-        // this.PhoneNumber = this.PhoneNumber.bind(this);
-        // this.Password = this.Password.bind(this);
     }
     UserName(event) {
         this.setState({
@@ -56,7 +52,7 @@ class Login extends Component {
         }).then((Response) => Response.json())
             .then((result) => {
                 console.log(result);
-                if (result.title == 'Unauthorized') {
+                if (result.title === 'Unauthorized') {
                     this.setState({
                         isActive: true,
                         errPassword: 'Invalid Username or Password. Please try again'

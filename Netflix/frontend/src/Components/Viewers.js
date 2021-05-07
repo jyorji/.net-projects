@@ -5,37 +5,37 @@ function Viewrs() {
     return (
         <Container>
             <Wrap>
-                <img src='/images/viewers-disney.png' />
+                <img src='/images/viewers-disney.png' alt='' />
                 <video autoPlay={true} loop={true} playsInline={true}>
                     <source src='/videos/disney-video.mp4' type='video/mp4' />
                 </video>
             </Wrap>
             <Wrap>
-                <img src='/images/viewers-pixar.png' />
+                <img src='/images/viewers-pixar.png' alt='' />
                 <video autoPlay={true} loop={true} playsInline={true}>
                     <source src='/videos/pixar-video.mp4' type='video/mp4' />
                 </video>
             </Wrap>
             <Wrap>
-                <img src='/images/viewers-marvel.png' />
+                <img src='/images/viewers-marvel.png' alt='' />
                 <video autoPlay={true} loop={true} playsInline={true}>
                     <source src='/videos/marvel-video.mp4' type='video/mp4' />
                 </video>
             </Wrap>
             <Wrap>
-                <img src='/images/viewers-starwars.png' />
+                <img src='/images/viewers-starwars.png' alt='' />
                 <video autoPlay={true} loop={true} playsInline={true}>
                     <source src='/videos/starwars-video.mp4' type='video/mp4' />
                 </video>
             </Wrap>
             <Wrap>
-                <img src='/images/viewers-national.png' />
+                <img src='/images/viewers-national.png' alt='' />
                 <video autoPlay={true} loop={true} playsInline={true}>
                     <source src='/videos/national-video.mp4' type='video/mp4' />
                 </video>
             </Wrap>
             <Wrap>
-                <img src='/images/viewers-star.png' />
+                <img src='/images/viewers-star.png' alt='' />
                 <video autoPlay={true} loop={true} playsInline={true}>
                     <source src='/videos/star-video.mp4' type='video/mp4' />
                 </video>

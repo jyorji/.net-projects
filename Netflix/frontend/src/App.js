@@ -1,7 +1,6 @@
 import './App.css';
 import Regisration from './Components/Registration';
 import Login from './Components/Login';
-import Dashboard from './Components/Dashboard';
 import ProtectedRoute from './Components/ProtectedRoute';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Detail from './Components/Detail';
@@ -23,7 +22,6 @@ function App() {
           <ProtectedRoute path='/Detail' component={Detail}>
           </ProtectedRoute>
           {/* <Route path='/Dashboard' component={Dashboard} /> */}
-          <ProtectedRoute path='/Dashboard' component={Dashboard} />
         </Switch>
         <Footer />
       </div>

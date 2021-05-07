@@ -5,9 +5,9 @@ function Footer() {
 
     return (
         <Container>
-            <Logo src='/images/logo.svg' />
+            <Logo src='' />
             <Content>
-                © Disney. All Rights Reserved.
+                © Clone. All Rights Reserved.
             </Content>
         </Container>
     )

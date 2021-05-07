@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Registration.css';
 import styled from 'styled-components'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import { Button, Card, CardFooter, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
+import { Button, Card, CardBody, Col, Container, Form, Input, InputGroup, Row } from 'reactstrap';
 
 class Regisration extends Component {
     constructor() {
@@ -77,11 +77,11 @@ class Regisration extends Component {
                         });
                         alert(alertString);
                     }
-                    else if (Result.status == 200) {
+                    else if (Result.status === 200) {
                         alert('Registration Done...')
                     }
 
-                    this.props.history.push("/Dashboard");
+                    this.props.history.push("/Home");
                     //<Link to={'/Login'}></Link>
                 })
         }

@@ -5,25 +5,25 @@ function Detail() {
     return (
         <Container>
             <Background>
-                <img src='/images/movie-detail-pic.jfif' />
+                <img src='/images/movie-detail-pic.jfif' alt='' />
             </Background>
             <ImageTitle>
-                <img src='/images/movie-name.png' />
+                <img src='/images/movie-name.png' alt='' />
             </ImageTitle>
             <Controls>
                 <PlayButton>
-                    <img src='/images/play-icon-black.png' />
+                    <img src='/images/play-icon-black.png' alt='' />
                     <span>PLAY</span>
                 </PlayButton>
                 <TrailerButton>
-                    <img src='/images/play-icon-white.png' />
+                    <img src='/images/play-icon-white.png' alt='' />
                     <span>TRAILER</span>
                 </TrailerButton>
                 <AddButton>
                     +
                 </AddButton>
                 <GroupWatchButton>
-                    <img src='/images/group-icon.png' />
+                    <img src='/images/group-icon.png' alt='' />
                 </GroupWatchButton>
             </Controls>
             <SubTitle>

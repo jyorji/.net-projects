@@ -1,26 +1,32 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useHistory } from "react-router-dom"
 
 function Movies() {
+
+    const history = useHistory()
+    let RedirectTo = e => {
+        history.push("/Detail");
+    }
     return (
 
         <Container>
             <h4>Recommended for You</h4>
             <Content>
                 <Wrap>
-                    <img src='/images/movie-pic.jfif' />
+                    <img src='/images/movie-pic.jfif' alt='' onClick={RedirectTo} />
                 </Wrap>
                 <Wrap>
-                    <img src='/images/movie-pic.jfif' />
+                    <img src='/images/movie-pic.jfif' alt='' onClick={RedirectTo} />
                 </Wrap>
                 <Wrap>
-                    <img src='/images/movie-pic.jfif' />
+                    <img src='/images/movie-pic.jfif' alt='' onClick={RedirectTo} />
                 </Wrap>
                 <Wrap>
-                    <img src='/images/movie-pic.jfif' />
+                    <img src='/images/movie-pic.jfif' alt='' onClick={RedirectTo} />
                 </Wrap>
                 <Wrap>
-                    <img src='/images/movie-pic.jfif' />
+                    <img src='/images/movie-pic.jfif' alt='' onClick={RedirectTo} />
                 </Wrap>
             </Content>
         </Container>
