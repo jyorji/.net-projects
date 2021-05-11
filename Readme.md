@@ -7,7 +7,7 @@
 - Ms SQL
 
 #### Frontend
-- ReactJS
+- ReactJS & Styled Components
 
 # Screenshots
 
