@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "7ci3I/GpuYqH5sEMKngH5p743eGV2xT8u/op2+QiaxvwLikwb58em5RymEE1y0c+V72jVAKzvyGLzpwMlyXDcw==",
+  "dgSpecHash": "cbofxJ60BPsE9N0p/R3Eq9KW11jD9UBKHvLMSf7KpmCZKeHZ5HwOXmhskqgTcHFqfiwjXLDh8mpTWBkMD4glwA==",
   "success": true,
   "projectFilePath": "D:\\.net projects\\WebAPI\\WebAPI\\WebAPI.csproj",
   "expectedPackageFiles": [
@@ -17,7 +17,8 @@
     "C:\\Users\\jyorj\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\jyorj\\.nuget\\packages\\system.data.sqlclient\\4.8.2\\system.data.sqlclient.4.8.2.nupkg.sha512",
     "C:\\Users\\jyorj\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
-    "C:\\Users\\jyorj\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512"
+    "C:\\Users\\jyorj\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
+    "C:\\Users\\jyorj\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.14\\microsoft.netcore.app.host.win-x64.3.1.14.nupkg.sha512"
   ],
   "logs": []
 }
