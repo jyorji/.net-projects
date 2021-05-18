@@ -25,7 +25,7 @@ namespace WebAPI.Controllers
         [HttpGet]
         public JsonResult Get()
         {
-            var result = new DAL(_configuration.GetConnectionString("EmployeeAppCon"));
+            var result = new DAL(_configuration.GetConnectionString("NetflixDB"));
             var t = new JsonResult(result.GetDepartment());
             return t;
         }

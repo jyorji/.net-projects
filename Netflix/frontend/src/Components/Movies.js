@@ -1,33 +1,37 @@
-import React from 'react'
+import { React, useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { useHistory } from "react-router-dom"
+import { Link } from "react-router-dom"
+import { getMovies } from "../service/getMovies";
 
 function Movies() {
 
-    const history = useHistory()
-    let RedirectTo = e => {
-        history.push("/Detail");
-    }
-    return (
+    const [res, setRes] = useState([])
+    useEffect(() => {
+        let mounted = true
+        getMovies()
+            .then((result) => {
+                if (mounted) {
+                    setRes(result)
+                    console.log(result)
+                }
+            })
+        return () => mounted = false
+    }, [])
 
+    return (
         <Container>
             <h4>Recommended for You</h4>
             <Content>
-                <Wrap>
-                    <img src='/images/movie-pic.jfif' alt='' onClick={RedirectTo} />
-                </Wrap>
-                <Wrap>
-                    <img src='/images/movie-pic.jfif' alt='' onClick={RedirectTo} />
-                </Wrap>
-                <Wrap>
-                    <img src='/images/movie-pic.jfif' alt='' onClick={RedirectTo} />
-                </Wrap>
-                <Wrap>
-                    <img src='/images/movie-pic.jfif' alt='' onClick={RedirectTo} />
-                </Wrap>
-                <Wrap>
-                    <img src='/images/movie-pic.jfif' alt='' onClick={RedirectTo} />
-                </Wrap>
+                {res && res.map((card) =>
+                (
+                    <Wrap key={card.movieId}>
+                        <Link to={`/detail/${card.movieId}`}>
+                            <img src={card.cardImg} alt='' />
+                        </Link>
+                    </Wrap>
+                )
+                )}
+
             </Content>
         </Container>
 

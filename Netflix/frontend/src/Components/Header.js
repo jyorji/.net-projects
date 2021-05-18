@@ -32,7 +32,7 @@ function Header() {
     return (
         <Nav>
             <Logo src='' />
-            {location.pathname === '/Login' || location.pathname === '/Signup'
+            {location.pathname === '/Login' || location.pathname === '/Signup' || location.pathname === '/'
 
                 ? null
                 :

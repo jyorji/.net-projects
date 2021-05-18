@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './Registration.css';
 import styled from 'styled-components'
+import { loginService } from '../service/loginService'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import { Button, Card, CardBody, Col, Container, Form, Input, InputGroup, Row, Alert } from 'reactstrap';
+import { Button, Card, CardBody, Col, Container, Form, Input, InputGroup, Row, Label, Alert } from 'reactstrap';
 
 class Login extends Component {
     constructor() {
@@ -39,20 +40,10 @@ class Login extends Component {
             });
             return;
         }
-        fetch(process.env.REACT_APP_API + 'login', {
-            method: 'post',
-            headers: {
-                'Accept': '*/*',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                UserName: this.state.UserName,
-                Password: this.state.Password
-            })
-        }).then((Response) => Response.json())
+        loginService(this.state.UserName, this.state.Password)
             .then((result) => {
                 console.log(result);
-                if (result.title === 'Unauthorized') {
+                if (result.title == 'Unauthorized') {
                     this.setState({
                         isActive: true,
                         errPassword: 'Invalid Username or Password. Please try again'

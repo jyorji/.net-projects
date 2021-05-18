@@ -19,7 +19,7 @@ function App() {
           <Route path='/Signup' component={Regisration} />
           <ProtectedRoute path='/Home' component={Home}>
           </ProtectedRoute>
-          <ProtectedRoute path='/Detail' component={Detail}>
+          <ProtectedRoute path='/Detail/:movieId' component={Detail}>
           </ProtectedRoute>
           {/* <Route path='/Dashboard' component={Dashboard} /> */}
         </Switch>

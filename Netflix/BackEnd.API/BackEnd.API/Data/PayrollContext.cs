@@ -13,5 +13,6 @@ namespace BackEnd.API.Data
         public PayrollContext(DbContextOptions<PayrollContext> options) : base(options)
         {
         }
+        public DbSet<MoviesModel> Movies { get; set; }
     }
 }

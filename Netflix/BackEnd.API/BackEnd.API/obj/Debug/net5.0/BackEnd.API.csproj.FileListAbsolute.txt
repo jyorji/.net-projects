@@ -75,3 +75,4 @@ D:\.net projects\Netflix\BackEnd.API\BackEnd.API\obj\Debug\net5.0\BackEnd.API.pd
 D:\.net projects\Netflix\BackEnd.API\BackEnd.API\obj\Debug\net5.0\BackEnd.API.genruntimeconfig.cache
 D:\.net projects\Netflix\BackEnd.API\BackEnd.API\obj\Debug\net5.0\BackEnd.API.csprojAssemblyReference.cache
 D:\.net projects\Netflix\BackEnd.API\BackEnd.API\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\.net projects\Netflix\BackEnd.API\BackEnd.API\bin\Debug\net5.0\Newtonsoft.Json.dll

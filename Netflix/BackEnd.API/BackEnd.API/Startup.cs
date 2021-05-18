@@ -58,6 +58,7 @@ namespace BackEnd.API
                 });
 
             services.AddTransient<IAccountRepository, AccountRepository>();
+            services.AddTransient<IMoviesRepository, MoviesRepository>();
             services.AddRazorPages();
 
             services.AddCors(option =>

@@ -1,37 +1,59 @@
-import React from 'react'
+import { React, useState, useEffect } from 'react'
 import styled from 'styled-components'
+import { useParams } from 'react-router-dom'
+import { getMovieById } from "../service/getMovieById"
 
-function Detail() {
+const Detail = (props) => {
+    const { movieId } = useParams();
+    const [res, setRes] = useState([])
+    useEffect(() => {
+        let mounted = true
+        //console.log(movieId)
+        getMovieById(movieId)
+            .then((result) => {
+                if (mounted) {
+                    setRes(result)
+                    console.log(result)
+                }
+            })
+        return () => mounted = false
+    }, [])
     return (
         <Container>
-            <Background>
-                <img src='/images/movie-detail-pic.jfif' alt='' />
-            </Background>
-            <ImageTitle>
-                <img src='/images/movie-name.png' alt='' />
-            </ImageTitle>
-            <Controls>
-                <PlayButton>
-                    <img src='/images/play-icon-black.png' alt='' />
-                    <span>PLAY</span>
-                </PlayButton>
-                <TrailerButton>
-                    <img src='/images/play-icon-white.png' alt='' />
-                    <span>TRAILER</span>
-                </TrailerButton>
-                <AddButton>
-                    +
+            {
+                (
+                    <>
+                        <Background>
+                            <img src={res.backgroundImg} alt='' />
+                        </Background>
+                        <ImageTitle>
+                            <img src={res.titleImg} alt='' />
+                        </ImageTitle>
+                        <Controls>
+                            <PlayButton>
+                                <img src='/images/play-icon-black.png' alt='' />
+                                <span>PLAY</span>
+                            </PlayButton>
+                            <TrailerButton>
+                                <img src='/images/play-icon-white.png' alt='' />
+                                <span>TRAILER</span>
+                            </TrailerButton>
+                            <AddButton>
+                                +
                 </AddButton>
-                <GroupWatchButton>
-                    <img src='/images/group-icon.png' alt='' />
-                </GroupWatchButton>
-            </Controls>
-            <SubTitle>
-                2018 • 2h • Science Fiction, Comedy, Action-Adventure
-            </SubTitle>
-            <Description>
-                Scott Lang grapples with his choices as both a Super Hero and a father. As he struggles to balance his home life with his responsibilities as Ant-Man, he’s confronted with an urgent new mission and must once again put on the suit and fight alongside the Wasp.
-            </Description>
+                            <GroupWatchButton>
+                                <img src='/images/group-icon.png' alt='' />
+                            </GroupWatchButton>
+                        </Controls>
+                        <SubTitle>
+                            {res.subTitle}
+                        </SubTitle>
+                        <Description>
+                            {res.description}
+                        </Description>
+                    </>
+                )
+            }
         </Container>
     )
 }

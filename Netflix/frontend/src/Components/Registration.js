@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Registration.css';
 import styled from 'styled-components'
+import { registerService } from '../service/registerService'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { Button, Card, CardBody, Col, Container, Form, Input, InputGroup, Row } from 'reactstrap';
 
@@ -51,22 +52,7 @@ class Regisration extends Component {
         Password = this.state.Password;
         ConfirmPassword = this.state.ConfirmPassword;
         if (this.Validation(FirstName, LastName, UserName, PhoneNumber, Password, ConfirmPassword)) {
-            // console.log(process.env.REACT_APP_API)
-            fetch(process.env.REACT_APP_API + 'signup', {
-                method: 'post',
-                headers: {
-                    'Accept': '*/*',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    FirstName: this.state.FirstName,
-                    LastName: this.state.LastName,
-                    UserName: this.state.UserName,
-                    PhoneNumber: this.state.PhoneNumber,
-                    Password: this.state.Password,
-                    ConfirmPassword: this.state.ConfirmPassword
-                })
-            }).then((Response) => Response.json())
+            registerService(FirstName, LastName, UserName, PhoneNumber, Password, ConfirmPassword)
                 .then((Result) => {
 
                     if (Result.length > 0) {
@@ -79,9 +65,8 @@ class Regisration extends Component {
                     }
                     else if (Result.status === 200) {
                         alert('Registration Done...')
+                        this.props.history.push("/Home");
                     }
-
-                    this.props.history.push("/Home");
                     //<Link to={'/Login'}></Link>
                 })
         }
